@@ -54,6 +54,6 @@ public class StockMovementEntity {   // Registra todas as movimentações realiz
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @NotNull(message = "Informe o usuário da movimentação..")
+    @NotNull(message = "Informe o usuário da movimentação.")
     private UserEntity user;
 }

@@ -1,0 +1,13 @@
+package com.erickleo.logitrack.modules.order.repository;
+
+import com.erickleo.logitrack.modules.order.entity.OrderItemEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface OrderItemRepository extends JpaRepository<OrderItemEntity, UUID> {
+
+    List<OrderItemEntity> findByOrderId(UUID orderId);
+}

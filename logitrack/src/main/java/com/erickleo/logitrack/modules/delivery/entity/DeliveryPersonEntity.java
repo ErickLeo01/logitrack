@@ -31,6 +31,7 @@ public class DeliveryPersonEntity {
     private String email;
 
     @NotBlank(message = "Informe o telefone do entregador.")
+    @Column(unique = true)
     private String phone;
 
     @NotBlank(message = "Informe o documento do entregador.")
@@ -38,7 +39,7 @@ public class DeliveryPersonEntity {
     private String document;
 
     @NotNull(message = "Informe o status do entregador.")
-    private Boolean active;
+    private Boolean status;
 
     @NotNull(message = "Informe a data de criação do entregador.")
     private LocalDateTime creationDate;

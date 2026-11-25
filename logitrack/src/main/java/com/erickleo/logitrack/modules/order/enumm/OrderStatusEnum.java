@@ -1,12 +1,11 @@
 package com.erickleo.logitrack.modules.order.enumm;
 
 public enum OrderStatusEnum {
-
-    PENDING,
+    PENDING,       // PENDENTE
     PROCESSING,
-    SHIPPED,  // ENVIADO
     SEPARATED,
-    DELIVERED,   // ENTREGUE
+    SHIPPED,
+    DELIVERED,
     CANCELED,
-    RETURNED;
+    RETURNED
 }
