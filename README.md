@@ -85,6 +85,7 @@ logitrack/
 - [x] Criação dos DTOs iniciais.
 - [x] Criação das exceções específicas do módulo User.
 - [x] Implementação inicial dos UseCases de User (CRUD).
+- [x] Implementação dos UseCases de Warehouse (CRUD).
 - [ ] Finalização dos UseCases de User.
 - [ ] Desenvolvimento dos demais UseCases.
 - [ ] Desenvolvimento dos Controllers.
