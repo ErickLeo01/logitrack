@@ -1,11 +1,8 @@
 package com.erickleo.logitrack.modules.warehouse.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
-
-public record WarenhouseDTO(
+public record WarehouseDTO(
 
         @NotBlank(message = "Informe o nome do armazém.")
         String name,
@@ -20,12 +17,6 @@ public record WarenhouseDTO(
         String city,
 
         @NotBlank(message = "Informe o estado do armazem.")
-        String state,
-
-        @NotNull(message = "Informe o status do armazem.")
-        Boolean status,
-
-        @NotNull(message = "Informe a data de criação do armazem.")
-        LocalDateTime creationDate
+        String state
 ) {
 }
