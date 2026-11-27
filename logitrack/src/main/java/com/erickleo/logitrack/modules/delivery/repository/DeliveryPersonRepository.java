@@ -9,4 +9,6 @@ public interface DeliveryPersonRepository extends JpaRepository<DeliveryPersonEn
 
     boolean existsByEmail(String email);
     boolean existsByDocument(String document);
+    boolean existsByPhone(String phone);
+
 }
