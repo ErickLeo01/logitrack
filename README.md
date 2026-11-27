@@ -8,10 +8,11 @@ O LogiTrack tem como objetivo aplicar conhecimentos de desenvolvimento Full Stac
 
 ### Backend
 - Java 21
-- Spring Boot
+- Spring Boot 3.2
 - Spring Data JPA
 - Hibernate
 - PostgreSQL
+- Flyway (versionamento do banco de dados)
 - Maven
 - Lombok
 - Bean Validation
@@ -45,9 +46,17 @@ Cada módulo possui pastas destinadas a:
 - `enumm`: definição de estados e tipos.
 - `exception`: tratamento de exceções específicas.
 - `repository`: acesso e persistência dos dados.
-- `service`: implementação das regras de negócio por meio de UseCases.
+- `service`: implementação das regras de negócio por meio de UseCases (uma classe por operação).
 
 Nem todos esses componentes estão implementados em todos os módulos.
+
+### Banco de dados
+
+O schema é criado e versionado com Flyway, por meio de migrations em `src/main/resources/db/migration`. Existem 9 migrations, uma para cada tabela: armazéns, usuários, produtos, entregadores, estoque, pedidos, itens do pedido, entregas e movimentações de estoque.
+
+### Paginação
+
+As listagens (armazéns, produtos e entregadores) usam `Pageable` e retornam `Page` de DTOs de resposta, sem expor as entidades.
 
 ## 📂 Estrutura do projeto
 
@@ -57,15 +66,17 @@ logitrack/
 │   └── logitrack-api/
 │       └── src/
 │           └── main/
-│               └── java/
-│                   └── com/erickleo/logitrack/
-│                       └── modules/
-│                           ├── user/
-│                           ├── product/
-│                           ├── stock/
-│                           ├── warehouse/
-│                           ├── order/
-│                           └── delivery/
+│               ├── java/
+│               │   └── com/erickleo/logitrack/
+│               │       └── modules/
+│               │           ├── user/
+│               │           ├── product/
+│               │           ├── stock/
+│               │           ├── warehouse/
+│               │           ├── order/
+│               │           └── delivery/
+│               └── resources/
+│                   └── db/migration/
 ├── front/
 │   └── logitrack/
 └── README.md
@@ -82,15 +93,19 @@ logitrack/
 - [x] Desenvolvimento das entidades (Entities).
 - [x] Criação dos enums.
 - [x] Criação dos repositórios (Repositories).
-- [x] Criação dos DTOs iniciais.
-- [x] Criação das exceções específicas do módulo User.
-- [x] Implementação inicial dos UseCases de User (CRUD).
-- [x] Implementação dos UseCases de Warehouse (CRUD).
-- [ ] Finalização dos UseCases de User.
-- [ ] Desenvolvimento dos demais UseCases.
+- [x] Migrations do banco de dados com Flyway.
+- [x] Configuração e integração com PostgreSQL.
+- [x] Criação dos DTOs de User, Warehouse, Product e DeliveryPerson.
+- [x] Exceções específicas dos módulos User, Warehouse, Product e DeliveryPerson.
+- [x] UseCases de User (criar, buscar, atualizar e deletar).
+- [x] UseCases de Warehouse (CRUD e listagem paginada).
+- [x] UseCases de Product (CRUD e listagem paginada).
+- [ ] Validação de código duplicado nos UseCases de Product.
+- [ ] UseCases de DeliveryPerson (criar e atualizar iniciados; faltam deletar, buscar e listar).
+- [ ] Listagem de User.
+- [ ] UseCases de Stock, Order e Delivery.
 - [ ] Desenvolvimento dos Controllers.
 - [ ] Implementação do tratamento global de exceções.
-- [ ] Configuração e integração com PostgreSQL.
 - [ ] Implementação da segurança e autenticação com Spring Security e JWT.
 
 ### Frontend
